@@ -66,6 +66,28 @@ public class Usuario
         }
     }
 
+    public Usuario(string usu_login)
+    {
+        DsGeral.TbUsuarioDataTable tbUsuario = new DsGeral.TbUsuarioDataTable();
+        dsUsuario.FillByLogin(tbUsuario, usu_login);
+        populaDados(tbUsuario);        
+    }
+
+    public void populaDados(DsGeral.TbUsuarioDataTable tbUsuario)
+    {
+
+        if (tbUsuario.Rows.Count > 0)
+        {
+            DsGeral.TbUsuarioRow regUsuario = (DsGeral.TbUsuarioRow)tbUsuario.Rows[0];
+            this.usu_id = regUsuario.usu_id;
+            this.usu_nome = regUsuario.usu_nome;
+            this.usu_login = regUsuario.usu_login;
+            this.usu_senha = regUsuario.usu_senha;
+            this.usu_ativo = regUsuario.usu_ativo;
+        }
+
+    }
+
     public string salvar(int usu_id, string usu_nome, string usu_login, string usu_senha, bool usu_ativo)
     {
         if (string.IsNullOrEmpty(usu_nome))

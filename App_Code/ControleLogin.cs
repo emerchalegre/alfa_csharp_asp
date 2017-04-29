@@ -28,6 +28,8 @@ public class ControleLogin
         DsGeralTableAdapters.TbUsuarioTableAdapter dsUsuario = new DsGeralTableAdapters.TbUsuarioTableAdapter();
         dsUsuario.FillByLoginAndPass(tbUsuario, usuario, senha);
 
+        //tbUsuario.Rows.Find(0);
+
         return (tbUsuario.Rows.Count > 0);
 
 

@@ -16,7 +16,7 @@
         <asp:Hyperlink id="lnkCategoria" runat="server" Text="Categoria" NavigateURL="~/Adm/Categoria.aspx"/>        
         <asp:Hyperlink id="lnkNoticia" runat="server" Text="Notícia" NavigateURL="~/Adm/Noticia.aspx"/>        
         <asp:Hyperlink id="lnkUsuario" runat="server" Text="Usuário" NavigateURL="~/Adm/Usuario.aspx"/>
-        <asp:Hyperlink id="lnkSair" runat="server" Text="Sair" NavigateURL="~/Adm/Sair.aspx"/>
+        <asp:LinkButton id="lnkSair" runat="server" Text="Sair" NavigateURL="~/Adm/Sair.aspx" OnClick="sair"/>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">            
         
         </asp:ContentPlaceHolder>

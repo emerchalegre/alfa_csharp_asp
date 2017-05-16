@@ -48,19 +48,19 @@ public partial class Adm_Categoria : System.Web.UI.Page
         if (cat_id <= 0)
         {
             edtCatId.Text = "";
-            edtCatNome.Text = "";
+            edtCatNome.Value = "";
         }
         else
         {
             Categoria cat = new Categoria(cat_id);
             edtCatId.Text = cat.Cat_id.ToString();
-            edtCatNome.Text = cat.Cat_nome;
+            edtCatNome.Value = cat.Cat_nome;
         }
     }
 
     private void habilitarCampos(bool habilitar)
     {
-        edtCatNome.Enabled = habilitar;
+        edtCatNome.Disabled = !habilitar;
         BarraEdicao.BtnGravar.Enabled = habilitar;
         BarraEdicao.BtnCancelar.Enabled = habilitar;
 
@@ -93,9 +93,9 @@ public partial class Adm_Categoria : System.Web.UI.Page
         Categoria cat = new Categoria();
 
         if (string.IsNullOrEmpty(edtCatId.Text))
-            retorno = cat.inserir(edtCatNome.Text);
+            retorno = cat.inserir(edtCatNome.Value);
         else
-            retorno = cat.editar(int.Parse(edtCatId.Text), edtCatNome.Text);
+            retorno = cat.editar(int.Parse(edtCatId.Text), edtCatNome.Value);
 
         if (!string.IsNullOrEmpty(retorno))
         {
@@ -109,6 +109,7 @@ public partial class Adm_Categoria : System.Web.UI.Page
 
         habilitarCampos(false);
         atualizarDados();
+        btnListagem_Click(null, null);
     }
 
     private void atualizarDados()
@@ -134,8 +135,10 @@ public partial class Adm_Categoria : System.Web.UI.Page
         {
             Funcoes.mostrarMensagem(this, "Registro excluído com sucesso!");
         }
+
         atualizarCampos(0);
         atualizarDados();
+        btnListagem_Click(null, null);
     }
 
     protected void grdCategoria_SelectedIndexChanged(object sender, EventArgs e)

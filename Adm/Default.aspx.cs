@@ -18,10 +18,10 @@ public partial class Adm_Default : System.Web.UI.Page
     {
         
         ControleLogin controleLogin = new ControleLogin();
-
-        if (controleLogin.buscarUsuario(edtLogin.Text, edtSenha.Text))
+        Console.WriteLine(edtLogin.Value);
+        if (controleLogin.buscarUsuario(edtLogin.Value, edtSenha.Value))
         {
-            Usuario usuario = new Usuario(edtLogin.Text);
+            Usuario usuario = new Usuario(edtLogin.Value);
             Session["Usuario"] = usuario;
             Response.Redirect("~/Adm/Inicio.aspx");
         }

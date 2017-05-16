@@ -6,17 +6,19 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:UpdatePanel ID="UpdatePanelCategoria" runat="server">
-        <ContentTemplate>
-            <p>
-                <asp:Button ID="btnListagem" runat="server" Text="Listagem"
-                    OnClick="btnListagem_Click" />
-                <asp:Button ID="btnCadastro" runat="server" Text="Cadastro"
-                    OnClick="btnCadastro_Click" />
-            </p>
+       <ContentTemplate>
+           <div class="container">
+               <div class="row" style="margin-left: 20px;">
+                   <button class="btn btn-info" runat="server" onserverclick="btnListagem_Click">Listagem</button>
+                   <button class="btn btn-primary" runat="server" onserverclick="btnCadastro_Click">Cadastro</button>
+               </div> 
+               <br />
+           
+            
             <asp:MultiView ID="MultiViewCategoria" runat="server">
-                <asp:View ID="tabListagem" runat="server">
-                    <p>Listagem de Categorias</p>
-                    <asp:GridView ID="grdCategoria" runat="server" AutoGenerateColumns="False" 
+                <asp:View ID="tabListagem" EnableTheming="true" runat="server">
+                    <h1 class="danger">Listagem de Categorias</h1>
+                    <asp:GridView CssClass="table table-bordered table-responsive text-center" ID="grdCategoria" runat="server" AutoGenerateColumns="False" 
                         AllowSorting="true" DataKeyNames="cat_id" DataSourceID="dsCategoria"
                         OnSelectedIndexChanged="grdCategoria_SelectedIndexChanged">
                         <Columns>
@@ -26,7 +28,7 @@
                             <asp:BoundField DataField="cat_nome" HeaderText="Nome"
                                 SortExpression="cat_nome" />
 
-                            <asp:CommandField HeaderText="Selecionar" SelectText="Selecionar"
+                            <asp:CommandField ControlStyle-CssClass="btn btn-warning" SelectText="Selecionar"
                                 ButtonType="Button" ShowSelectButton="true" />
                         </Columns>
                     </asp:GridView>
@@ -40,10 +42,14 @@
             
                     <p><uc1:BarraEdicao runat="server" ID="BarraEdicao" /></p>
 
-                    Nome:<br />
-                    <asp:TextBox ID="edtCatNome" runat="server"></asp:TextBox>
+                    <div class="form-group">
+                        <label for="edtCatNome">Nome</label>
+                        <input type="text" runat="server" class="form-control" id="edtCatNome" placeholder="Categoria" />
+                    </div>
                 </asp:View>
             </asp:MultiView>
+               </div>
         </ContentTemplate>
+        
     </asp:UpdatePanel>
 </asp:Content>

@@ -6,13 +6,14 @@
 <head runat="server">
 
     <title></title>
-
+    <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/css/signin.css" rel="stylesheet" />
     <script type="text/javascript">
 
         (function () {
 
             document.addEventListener('DOMContentLoaded', function () {
-                document.getElementById("edtLogin").focus();
+                //document.getElementById("edtLogin").focus();
             });
 
         })();
@@ -21,18 +22,16 @@
     
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-    <asp:Panel ID="pnLogin" runat="server">
-        Login:<br />
-        <asp:TextBox ID="edtLogin" runat="server" ClientIDMode="Static"></asp:TextBox>
-        <br />
-        Senha:<br />
-        <asp:TextBox ID="edtSenha" runat="server" TextMode="Password"></asp:TextBox>
-        <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click"/>
-    </asp:Panel>
+    <div class="container">
+
+      <form class="form-signin" id="form1" runat="server" >
+        <h2 class="form-signin-heading">Login</h2>
+        <input type="text" runat="server" id="edtLogin" class="form-control" placeholder="Login" />
+        <input type="password" runat="server" id="edtSenha" class="form-control" placeholder="Senha" />
+        <button id="btnLogin"  class="btn btn-lg btn-primary btn-block" runat="server" type="submit" onserverclick="btnLogin_Click">Entrar</button>
+      </form>
+
     </div>
-    </form>
 </body>
 
     
